@@ -1,4 +1,4 @@
-public class LocalTester {
+Alpublic class LocalTester {
     public static TestHandler testHandler = new TestHandler();
     public static void main(String[] args) {
         StdOut.println("Welcome to the Localized Tester!");

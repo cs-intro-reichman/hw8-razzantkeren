@@ -44,7 +44,7 @@
     /** If this user follows the given name, returns true; otherwise returns false. */
     public boolean follows(String name) {
         for(int i = 0; i<this.follows.length; i++){
-            if (this.follows[i].equalsIgnoreCase(name)) {
+            if  (this.follows[i]!=null&&this.follows[i].equalsIgnoreCase(name)) {
                 return true;
             }
         }
@@ -69,7 +69,7 @@
     public boolean removeFollowee(String name) {
         int index = -1; 
         for(int i = 0; i<this.follows.length; i++){
-            if (this.follows[i].equalsIgnoreCase(name)) {
+            if (this.follows[i]!=null&&this.follows[i].equalsIgnoreCase(name)) {
                 index = i;
             }
         }
@@ -99,16 +99,16 @@
     /** Checks is this user is a friend of the other user.
      *  (if two users follow each other, they are said to be "friends.") */
     public boolean isFriendOf(User other) {
-        String[] follows1 = other.getfFollows();
         if (follows(other.getName())) {
-            for(int i = 0; i<other.getfCount(); i++){
-                if (follows1[i].equalsIgnoreCase(this.name)) {
+            for (int i = 0; i < other.getfCount(); i++) {
+                if (other.getfFollows()[i] != null && other.getfFollows()[i].equalsIgnoreCase(this.name)) {
                     return true;
                 }
+            }
         }
+        return false;
     }
-    return false;
-    }
+    
     /** Returns this user's name, and the names that s/he follows. */
     public String toString() {
         String ans = name + " -> ";
